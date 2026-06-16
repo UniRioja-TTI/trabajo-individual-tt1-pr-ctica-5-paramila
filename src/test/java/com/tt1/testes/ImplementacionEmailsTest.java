@@ -14,7 +14,7 @@ public class ImplementacionEmailsTest {
         Logger unLogger = LoggerFactory.getLogger(ImplementacionEmails.class);
         ImplementacionEmails servicio = new ImplementacionEmails(unLogger);
         Destinatario unDestino = new Destinatario();
-        String unTexto = hola;
+        String unTexto = "hola";
         
         boolean resultado = servicio.enviarEmail(unDestino, unTexto);
         

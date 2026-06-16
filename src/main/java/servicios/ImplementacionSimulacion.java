@@ -40,7 +40,7 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
         this.laSolicitudGuardada = sol;
 
         io.swagger.client.ApiClient cliente = new io.swagger.client.ApiClient();
-        cliente.setBasePath("http://localhost:8080");
+        cliente.setBasePath("http://servicio-consumible:8080");
 
         SolicitudApi solicitudApi = new SolicitudApi(cliente);
         int tokenReal = -1;
@@ -89,7 +89,7 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
         int maxTiempo = 0;
 
         io.swagger.client.ApiClient cliente = new io.swagger.client.ApiClient();
-        cliente.setBasePath("http://localhost:8080");
+        cliente.setBasePath("http://servicio-consumible:8080");
         ResultadosApi resultadosApi = new ResultadosApi(cliente);
 
         try {

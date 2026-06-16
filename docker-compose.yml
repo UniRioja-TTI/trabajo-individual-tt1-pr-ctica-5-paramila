@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+
+  mi-aplicacion:
+    image: mi-trabajo-docker
+    ports:
+      - "8081:8081"
+    networks:
+      - red-privada
+
+
+  servicio-consumible:
+    image: javillour/servicio-tt1:amd64
+    networks:
+      - red-privada
+
+networks:
+  red-privada:
+    driver: bridge
