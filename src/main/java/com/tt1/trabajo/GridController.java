@@ -23,7 +23,7 @@ import modelo.DatosSolicitud;
 import modelo.Punto;
 
 @Controller
-public class GridController {
+public class 	GridController {
 	private final InterfazContactoSim ics;
 	private final Logger logger;
 	
