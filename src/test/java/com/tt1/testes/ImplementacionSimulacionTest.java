@@ -17,7 +17,6 @@ public class ImplementacionSimulacionTest {
         ImplementacionSimulacion servicio = new ImplementacionSimulacion();
         Map<Integer,Integer> nums = new HashMap<Integer,Integer>();
         DatosSolicitud unaSolicitud = new DatosSolicitud(nums);
-        
         int elToken = servicio.solicitarSimulation(unaSolicitud);
         boolean esMayorQueCero = elToken >= 0;
         assertTrue(esMayorQueCero);
@@ -26,7 +25,6 @@ public class ImplementacionSimulacionTest {
     @Test
     public void probarConseguirEntidades() {
         ImplementacionSimulacion servicio = new ImplementacionSimulacion();
-        
         List<Entidad> lista = servicio.getEntities();
         int cantidad = lista.size();
         boolean hayCosas = cantidad > 0;

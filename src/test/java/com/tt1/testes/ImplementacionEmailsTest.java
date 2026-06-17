@@ -13,11 +13,9 @@ public class ImplementacionEmailsTest {
     public void probarQueMandaCorreos() {
         Logger unLogger = LoggerFactory.getLogger(ImplementacionEmails.class);
         ImplementacionEmails servicio = new ImplementacionEmails(unLogger);
-        Destinatario unDestino = new Destinatario();
+        Destinatario destino = new Destinatario();
         String unTexto = "hola";
-        
-        boolean resultado = servicio.enviarEmail(unDestino, unTexto);
-        
+        boolean resultado = servicio.enviarEmail(destino, unTexto);
         assertTrue(resultado);
     }
 }
