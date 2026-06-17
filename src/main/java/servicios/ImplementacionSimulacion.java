@@ -34,7 +34,6 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
         lista.add(new Entidad(3, "Entidad3", "Prueba3"));
         this.listaDeCosas = lista;
     }
-
     @Override
     public int solicitarSimulation(DatosSolicitud sol) {
         this.laSolicitudGuardada = sol;
@@ -44,10 +43,8 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
 
         SolicitudApi solicitudApi = new SolicitudApi(cliente);
         int tokenReal = -1;
-
         try {
             Solicitud peticionSwagger = new Solicitud();
-
             Map<Integer, Integer> diccionarioNumeros = sol.getNums();
             for (Integer id : diccionarioNumeros.keySet()) {
                 int cantidad = diccionarioNumeros.get(id);
@@ -69,7 +66,6 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
                     System.err.println("Aviso al enviar: " + e.getMessage());
                 }
             }
-
             List<Integer> misTickets = solicitudApi.solicitudGetSolicitudesUsuarioGet("Pablo");
             if (misTickets != null && !misTickets.isEmpty()) {
                 tokenReal = misTickets.get(misTickets.size() - 1);
@@ -78,7 +74,6 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return tokenReal;
     }
 
@@ -88,22 +83,17 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
         Map<Integer, List<Punto>> mapaPuntos = new HashMap<>();
         int maxTiempo = 0;
 
-        io.swagger.client.ApiClient cliente = new io.swagger.client.ApiClient();
+        ApiClient cliente = new ApiClient();
         cliente.setBasePath("http://servicio-consumible:8080");
         ResultadosApi resultadosApi = new ResultadosApi(cliente);
-
         try {
             Call llamada = resultadosApi.resultadosPostCall("Pablo", ticket, null, null);
             Response respuestaHttp = llamada.execute();
             String jsonBruto = respuestaHttp.body().string();
-
             JsonObject json = new JsonParser().parse(jsonBruto).getAsJsonObject();
             String textoBruto = json.get("data").getAsString();
-
             String[] lineas = textoBruto.split("\n");
-
             misDatos.setAnchoTablero(Integer.parseInt(lineas[0].trim()));
-
             for (int i = 1; i < lineas.length; i++) {
                 String linea = lineas[i].trim();
 
