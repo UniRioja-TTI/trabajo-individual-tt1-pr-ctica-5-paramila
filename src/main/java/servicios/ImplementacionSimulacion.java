@@ -38,7 +38,7 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
     public int solicitarSimulation(DatosSolicitud sol) {
         this.laSolicitudGuardada = sol;
 
-        io.swagger.client.ApiClient cliente = new io.swagger.client.ApiClient();
+        ApiClient cliente = new ApiClient();
         cliente.setBasePath("http://servicio-consumible:8080");
 
         SolicitudApi solicitudApi = new SolicitudApi(cliente);
@@ -96,20 +96,16 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
             misDatos.setAnchoTablero(Integer.parseInt(lineas[0].trim()));
             for (int i = 1; i < lineas.length; i++) {
                 String linea = lineas[i].trim();
-
                 if (!linea.isEmpty()) {
                     String[] partes = linea.split(",");
-
                     if (partes.length == 4) {
                         int tiempo = Integer.parseInt(partes[0].trim());
                         Punto p = new Punto();
                         p.setY(Integer.parseInt(partes[1].trim()));
                         p.setX(Integer.parseInt(partes[2].trim()));
                         p.setColor(partes[3].trim());
-
                         mapaPuntos.putIfAbsent(tiempo, new ArrayList<>());
                         mapaPuntos.get(tiempo).add(p);
-
                         if (tiempo > maxTiempo) {
                             maxTiempo = tiempo;
                         }
@@ -120,7 +116,6 @@ public class ImplementacionSimulacion implements InterfazContactoSim {
             for (int i = 0; i <= maxTiempo; i++) {
                 mapaPuntos.putIfAbsent(i, new ArrayList<>());
             }
-
             misDatos.setPuntos(mapaPuntos);
             misDatos.setMaxSegundos(maxTiempo + 1);
 
