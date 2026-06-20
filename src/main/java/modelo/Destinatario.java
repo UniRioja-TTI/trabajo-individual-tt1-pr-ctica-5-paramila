@@ -2,19 +2,19 @@ package modelo;
 
 public class Destinatario {
 
-    private String emailAddress;
+    private String email;
 
     public Destinatario() {}
 
-    public Destinatario(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public Destinatario(String email) {
+        this.email = email;
     }
 
     public String getEmailAddress() {
-        return emailAddress;
+        return email;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmailAddress(String email) {
+        this.email = email;
     }
 }
